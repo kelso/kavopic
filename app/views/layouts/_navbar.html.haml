@@ -9,14 +9,14 @@
 
     %ul.navbar-nav
       %li.nav-item.active
-      - if customer_signed_in?
+      - if user_signed_in?
         %li.nav-item.active
-          = link_to "Odhlásiť sa", destroy_customer_session_path, method: :delete, class: 'nav-link'
+          = link_to "Odhlásiť sa", destroy_user_session_path, method: :delete, class: 'nav-link'
       - else
         %li.nav-item.active
-          = link_to "Prihlásiť sa", new_customer_session_path, class: 'nav-link'
+          = link_to "Prihlásiť sa", new_user_session_path, class: 'nav-link'
         %li.nav-item.active
-          = link_to "Zaregistrovať sa", new_customer_registration_path, class: 'nav-link'
+          = link_to "Zaregistrovať sa", new_user_registration_path, class: 'nav-link'
 
     -#   %li.nav-item.active
     -#     %a.nav-link{:href => "#"}
