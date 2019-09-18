@@ -1,11 +1,12 @@
-%h2 Zákaznícky dashboard
+%h2 Zákaznícka zóna
 
 .card.text-white.bg-secondary.mb-3{:style => "max-width: 18rem;"}
   .card-header Môj stav
   .card-body
     %p.card-text 0 bodov
 
-.card.text-white.bg-secondary.mb-3{:style => "max-width: 18rem;"}
+.card.mb-3{:style => "max-width: 18rem;"}
   .card-header Môj QR kód
   .card-body
-    %p.card-text TODO QR kod
+    .bg-white
+      = raw @qr_code

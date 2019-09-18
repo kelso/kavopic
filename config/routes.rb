@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
+  namespace :operator do
+    resource :dashboard, only: [:show]
+  end
+
   root 'pages#index'
 end
