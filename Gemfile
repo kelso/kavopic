@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'haml-rails', '~> 2.0'
 gem 'devise'
 gem 'devise-i18n'
+gem 'omniauth'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
