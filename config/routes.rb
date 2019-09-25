@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   namespace :operator do
     resource :dashboard, only: [:show]
+    resources :transactions, only: [:index]
+    resources :users, only: [] do
+      resources :transactions, only: [:new, :create]
+    end
   end
 
   root 'pages#index'
