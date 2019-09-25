@@ -1,0 +1,17 @@
+%h2 Transakcie
+%p Transakcie vykonané pod profilom #{current_user.email}
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Zákazník
+      %th Aktivita
+      %th Zmena na bodoch
+  %tbody
+    - @transactions.each do |transaction|
+      %tr
+        %td= transaction.user.email
+        %td= transaction.transaction_category.name
+        %td= transaction.amount
+
+= link_to 'Späť', operator_dashboard_path, class: 'btn btn-primary btn-sm'

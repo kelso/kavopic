@@ -5,14 +5,21 @@ class Operator::TransactionsController < ApplicationController
 
   before_action :find_user, only: [:new, :create]
 
+  def index
+    @transactions = Transaction.created_by(current_user).order(created_at: :desc)
+  end
+
   def new
     @transaction = @user.transactions.build
   end
 
   def create
-    @transaction = @user.transaction.build transaction_params
+    @transaction = @user.transactions.build transaction_params
+    @transaction.created_by = current_user
+    @transaction.amount = @transaction.transaction_category.default_amount
+
     if @transaction.save
-      redirect_to root_url
+      redirect_to operator_transactions_url
     else
       render :new
     end
@@ -25,6 +32,6 @@ class Operator::TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:amount)
+    params.require(:transaction).permit(:transaction_category_id)
   end
 end

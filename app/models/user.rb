@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :lockable,
          :trackable,
          :omniauthable
+
+  has_many :transactions
 end

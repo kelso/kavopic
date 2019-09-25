@@ -1,0 +1,19 @@
+= form_with model: [:operator, @user, @transaction] do |f|
+  %h2 Zákazník
+  %p
+    E-mail:
+    = @user.email
+
+    %br
+    
+    Aktuálny počet bodov:
+    = @user.transactions.sum(:amount)
+
+  %h2 Vykonať akciu
+  - TransactionCategory.all.each do |tc|
+    = f.radio_button :transaction_category_id, tc.id
+    = f.label :"transaction_category_id_#{tc.id}", tc.name
+    %br
+
+  %div
+    = f.submit 'Vykonať', class: 'btn btn-primary'
