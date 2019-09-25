@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: kavopic_production
-  username: kavopic
-  password: <%= ENV['KAVOPIC_DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.digitalocean.database_name %>
+  username: <%= Rails.application.credentials.digitalocean.database_username %>
+  password: <%= Rails.application.credentials.digitalocean.database_password %>
