@@ -20,5 +20,6 @@ module Kavopic
     I18n.default_locale = :sk
 
     config.hosts << "kavopic.local"
+    config.hosts << "104.248.132.216"
   end
 end
