@@ -6,6 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Admins
+admins = [
+  ['stefan.huska+admin@gmail.com', '123456']
+]
+
+admins.each do |email, password|
+  u = Admin.where(
+    email: email
+  ).first_or_create!(
+    password: password
+  )
+end
 
 # Users
 

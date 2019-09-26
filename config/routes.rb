@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :users
 
+  namespace :admin do
+    root to: '/admin/dashboards#show'
+    resource :dashboard, only: [:show]
+  end
+
   namespace :user do
-    root to: 'customer/dashboards#show'
+    root to: '/customer/dashboards#show'
   end
 
   namespace :customer do

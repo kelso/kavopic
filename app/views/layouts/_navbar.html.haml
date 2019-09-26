@@ -10,7 +10,6 @@
         = link_to "Operátorská zóna", operator_dashboard_path, class: 'nav-link'
 
     %ul.navbar-nav
-      %li.nav-item.active
       - if user_signed_in?
         %li.nav-item.active
           = link_to "Odhlásiť sa", destroy_user_session_path, method: :delete, class: 'nav-link'
