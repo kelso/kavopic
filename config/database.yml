@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: <%= Rails.application.credentials.digitalocean.db_name %>
-  username: <%= Rails.application.credentials.digitalocean.db_username %>
-  password: <%= Rails.application.credentials.digitalocean.db_password %>
+  database: <%= Rails.application.credentials.digitalocean[:db_name] %>
+  username: <%= Rails.application.credentials.digitalocean[:db_username] %>
+  password: <%= Rails.application.credentials.digitalocean[:db_password] %>
