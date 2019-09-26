@@ -54,7 +54,7 @@ group :development do
   gem 'capistrano3-puma'
   gem 'capistrano-sidekiq'
   gem 'capistrano-maintenance', require: false
-  gem 'capistrano-yarn'
+  # gem 'capistrano-yarn'
 end
 
 group :test do

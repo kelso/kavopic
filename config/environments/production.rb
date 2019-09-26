@@ -114,6 +114,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'kavickar.com' }
 
 
-  # Trying to disable mails temporarily
+  # TODO: Trying to disable mails temporarily, remove later and setup email delivery
   config.action_mailer.delivery_method = :test
 end
