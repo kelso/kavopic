@@ -15,12 +15,11 @@ users = [
 ]
 
 users.each do |email, password|
-  u = User.new(
-    email: email,
+  u = User.where(
+    email: email
+  ).first_or_create!(
     password: password
   )
-  u.save
-  puts u.errors.inspect
   u.confirm
 end
 
@@ -32,8 +31,8 @@ data = [
 ]
 
 data.each do |name, default_amount|
-  TransactionCategory.create!(
+  TransactionCategory.where(
     name: name,
     default_amount: default_amount
-  )
+  ).first_or_create!
 end
