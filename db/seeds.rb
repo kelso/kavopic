@@ -15,10 +15,12 @@ users = [
 ]
 
 users.each do |email, password|
-  u = User.create!(
+  u = User.new(
     email: email,
     password: password
   )
+  u.save
+  puts u.errors.inspect
   u.confirm
 end
 
