@@ -19,19 +19,27 @@ admins.each do |email, password|
   )
 end
 
-# Users
+# Customers
 
-users = [
-  ['stefan.huska+customer@gmail.com', '123456'],
-  ['stefan.huska+operator@gmail.com', '123456'],
+customers = [
+  ['stefan.huska+customer1@gmail.com', '123456'],
+  ['stefan.huska+customer2@gmail.com', '123456'],
 ]
 
-users.each do |email, password|
-  u = User.where(
-    email: email
-  ).first_or_create!(
-    password: password
-  )
+customers.each do |email, password|
+  u = Customer.where(email: email).first_or_create!(password: password)
+  u.confirm
+end
+
+# Operators
+
+operators = [
+  ['stefan.huska+operator1@gmail.com', '123456'],
+  ['stefan.huska+operator2@gmail.com', '123456'],
+]
+
+operators.each do |email, password|
+  u = Operator.where(email: email).first_or_create!(password: password)
   u.confirm
 end
 

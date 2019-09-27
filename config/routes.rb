@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :users
+  devise_for :customers
+  devise_for :operators
 
   namespace :admin do
     root to: '/admin/dashboards#show'
     resource :dashboard, only: [:show]
   end
 
-  namespace :user do
-    root to: '/customer/dashboards#show'
-  end
-
   namespace :customer do
+    root to: 'dashboards#show'
     resource :dashboard, only: [:show]
   end
 
   namespace :operator do
+    root to: 'dashboard#show'
     resource :dashboard, only: [:show]
     resources :transactions, only: [:index]
-    resources :users, only: [] do
+    resources :customers, only: [] do
       resources :transactions, only: [:new, :create]
     end
   end

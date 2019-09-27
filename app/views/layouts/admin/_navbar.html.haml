@@ -10,7 +10,7 @@
         = link_to "Zákazníci", '#', class: 'nav-link'
 
     %ul.navbar-nav
-      - if user_signed_in?
+      - if admin_signed_in?
         %li.nav-item
           = link_to "Vrátiť sa späť", root_path, class: 'nav-link'
         %li.nav-item

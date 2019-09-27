@@ -3,7 +3,7 @@
 .card.text-white.bg-secondary.mb-3{:style => "max-width: 18rem;"}
   .card-header Môj stav
   .card-body
-    %p.card-text= "#{current_user.transactions.sum(:amount)} bodov"
+    %p.card-text= "#{current_customer.transactions.sum(:amount)} bodov"
 
 .card.mb-3{:style => "max-width: 18rem;"}
   .card-header Môj QR kód

@@ -1,21 +1,20 @@
 class Operator::TransactionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_operator!
+  layout 'operator'
 
-  # TODO authorize user is operator
-
-  before_action :find_user, only: [:new, :create]
+  before_action :find_customer, only: [:new, :create]
 
   def index
-    @transactions = Transaction.created_by(current_user).order(created_at: :desc)
+    @transactions = current_operator.transactions.includes(:customer).order(created_at: :desc)
   end
 
   def new
-    @transaction = @user.transactions.build
+    @transaction = @customer.transactions.build
   end
 
   def create
-    @transaction = @user.transactions.build transaction_params
-    @transaction.created_by = current_user
+    @transaction = @customer.transactions.build transaction_params
+    @transaction.operator = current_operator
     @transaction.amount = @transaction.transaction_category.default_amount
 
     if @transaction.save
@@ -27,8 +26,8 @@ class Operator::TransactionsController < ApplicationController
 
   private
 
-  def find_user
-    @user = User.find(params[:user_id])
+  def find_customer
+    @customer = Customer.find(params[:customer_id])
   end
 
   def transaction_params

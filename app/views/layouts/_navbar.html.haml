@@ -9,15 +9,15 @@
       %li.nav-item
         = link_to "Operátorská zóna", operator_dashboard_path, class: 'nav-link'
 
-    %ul.navbar-nav
-      - if user_signed_in?
-        %li.nav-item.active
-          = link_to "Odhlásiť sa", destroy_user_session_path, method: :delete, class: 'nav-link'
-      - else
-        %li.nav-item.active
-          = link_to "Prihlásiť sa", new_user_session_path, class: 'nav-link'
-        %li.nav-item.active
-          = link_to "Zaregistrovať sa", new_user_registration_path, class: 'nav-link'
+    -# %ul.navbar-nav
+    -#   - if user_signed_in?
+    -#     %li.nav-item.active
+    -#       = link_to "Odhlásiť sa", destroy_user_session_path, method: :delete, class: 'nav-link'
+    -#   - else
+    -#     %li.nav-item.active
+    -#       = link_to "Prihlásiť sa", new_user_session_path, class: 'nav-link'
+    -#     %li.nav-item.active
+    -#       = link_to "Zaregistrovať sa", new_user_registration_path, class: 'nav-link'
 
     -#   %li.nav-item.active
     -#     %a.nav-link{:href => "#"}

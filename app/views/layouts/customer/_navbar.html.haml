@@ -1,0 +1,16 @@
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  = link_to 'Kávopič', customer_root_path, class: 'navbar-brand'
+  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarSupportedContent.collapse.navbar-collapse
+    %ul.navbar-nav.mr-auto
+      -# %li.nav-item
+      -#   = link_to '', '#', class: 'nav-link'
+
+    %ul.navbar-nav
+      - if customer_signed_in?
+        %li.nav-item
+          = link_to "Odhlásiť sa", destroy_customer_session_path, method: :delete, class: 'nav-link'
+      - else
+        %li.nav-item
+          = link_to "Prihlásiť sa", new_customer_session_path, class: 'nav-link'

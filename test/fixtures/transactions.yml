@@ -2,10 +2,10 @@
 
 one:
   amount: 1
-  created_by: 
-  user: one
+  customer: one
+  operator: one
 
 two:
   amount: 1
-  created_by: 
-  user: two
+  customer: one
+  operator: one

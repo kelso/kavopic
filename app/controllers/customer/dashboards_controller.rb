@@ -1,9 +1,10 @@
 class Customer::DashboardsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
+  layout 'customer'
 
   def show
     # URL for direct access into admin
-    @url = url_for(new_operator_user_transaction_url(current_user.id))
+    @url = url_for(new_operator_customer_transaction_url(current_customer.id))
 
     qrcode = RQRCode::QRCode.new(@url)
 

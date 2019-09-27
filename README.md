@@ -22,9 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-## TODO
-
-rails g model TransactionCategory name:string default_amount:integer
-+ doplnit do seedov TransactionCategory
-rails g model Transaction amount:integer created_by_id:uuid:index user_id:uuid:index

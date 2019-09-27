@@ -1,5 +1,5 @@
 %h2 Transakcie
-%p Transakcie vykonané pod profilom #{current_user.email}
+%p Transakcie vykonané pod profilom #{current_operator.email}
 
 %table.table.table-bordered
   %thead
@@ -10,7 +10,7 @@
   %tbody
     - @transactions.each do |transaction|
       %tr
-        %td= transaction.user.email
+        %td= transaction.customer.email
         %td= transaction.transaction_category.name
         %td= transaction.amount
 
