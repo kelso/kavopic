@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: '/admin/dashboards#show'
     resource :dashboard, only: [:show]
+    resources :transactions, only: [:index, :destroy]
   end
 
   namespace :customer do

@@ -1,0 +1,21 @@
+%h2 Transakcie
+
+.table-responsive
+  %table.table.table-bordered.table-sm
+    %thead
+      %tr
+        %th Zákazník
+        %th Operátor
+        %th Aktivita
+        %th Zmena na bodoch
+        %th Akcia
+    %tbody
+      - @transactions.each do |transaction|
+        %tr
+          %td= transaction.customer.email
+          %td= transaction.operator.email
+          %td= transaction.transaction_category.name
+          %td= transaction.amount
+          %td= link_to 'Odstrániť', [:admin, transaction], method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Určite odstrániť?' }
+
+= link_to 'Späť', admin_dashboard_path, class: 'btn btn-primary btn-sm'
