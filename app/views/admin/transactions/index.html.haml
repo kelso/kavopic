@@ -12,8 +12,8 @@
     %tbody
       - @transactions.each do |transaction|
         %tr
-          %td= transaction.customer.email
-          %td= transaction.operator.email
+          %td= transaction.customer.full_name
+          %td= transaction.operator.full_name
           %td= transaction.transaction_category.name
           %td= transaction.amount
           %td= link_to 'Odstrániť', [:admin, transaction], method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Určite odstrániť?' }

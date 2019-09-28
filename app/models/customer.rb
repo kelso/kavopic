@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  include FullName
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable,
