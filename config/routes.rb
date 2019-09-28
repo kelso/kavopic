@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :operator do
-    root to: 'dashboard#show'
+    root to: 'dashboards#show'
     resource :dashboard, only: [:show]
     resources :transactions, only: [:index]
     resources :customers, only: [] do
