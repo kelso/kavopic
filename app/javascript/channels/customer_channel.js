@@ -12,6 +12,12 @@ consumer.subscriptions.create("CustomerChannel", {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
 
+    // Play sound
+    var sound = new Howl({
+      src: ['/alert.mp3']
+    }).play();
+
+    // Update points
     let div = document.getElementById('customer_points');
     if (div) div.innerHTML = data['html'];
   }
