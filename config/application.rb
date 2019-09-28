@@ -19,6 +19,7 @@ module Kavopic
     I18n.config.available_locales = :sk
     I18n.default_locale = :sk
 
+    config.time_zone = 'Bratislava'
     config.hosts << "kavopic.local"
     config.hosts << "104.248.132.216"
   end
