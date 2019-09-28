@@ -8,4 +8,8 @@ class Customer < ApplicationRecord
          :omniauthable
 
   has_many :transactions
+
+  def points_sum
+    transactions.sum(:amount)
+  end
 end

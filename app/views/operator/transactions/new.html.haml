@@ -1,13 +1,16 @@
 = form_with model: [:operator, @customer, @transaction] do |f|
   %h2 Zákazník
-  %p
-    E-mail:
-    = @customer.email
-
-    %br
-
-    Aktuálny počet bodov:
-    = @customer.transactions.sum(:amount)
+  %table.table-bordered.table-sm.mb-3
+    %tbody
+      %tr
+        %th Meno
+        %td= @customer.full_name
+      %tr
+        %th E-mail
+        %td= @customer.email
+      %tr
+        %th Aktuálny počet bodov
+        %td= @customer.transactions.sum(:amount)
 
   %h2 Vykonať akciu
   - TransactionCategory.all.each do |tc|

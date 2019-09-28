@@ -1,9 +1,7 @@
 %h2 Zákaznícka zóna
 
-.card.text-white.bg-secondary.mb-3{:style => "max-width: 18rem;"}
-  .card-header Môj stav
-  .card-body
-    %p.card-text= "#{current_customer.transactions.sum(:amount)} bodov"
+#customer_points
+  = render 'customer_points', customer_points: current_customer.points_sum
 
 .card.mb-3{:style => "max-width: 18rem;"}
   .card-header Môj QR kód

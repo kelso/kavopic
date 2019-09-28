@@ -1,8 +1,8 @@
 class Operator::TransactionsController < ApplicationController
-  before_action :authenticate_operator!
   layout 'operator'
-
+  before_action :authenticate_operator!
   before_action :find_customer, only: [:new, :create]
+  after_action :broadcast_to_channel, only: [:create]
 
   def index
     @transactions = current_operator.transactions.includes(:customer).order(created_at: :desc)
@@ -32,5 +32,15 @@ class Operator::TransactionsController < ApplicationController
 
   def transaction_params
     params.require(:transaction).permit(:transaction_category_id)
+  end
+
+  def broadcast_to_channel
+    points_sum = @customer.points_sum
+    html = ApplicationController.render(partial: 'customer/dashboards/customer_points', locals: { customer_points: points_sum })
+
+    CustomerChannel.broadcast_to(
+      @customer,
+      html: html,
+    )
   end
 end
