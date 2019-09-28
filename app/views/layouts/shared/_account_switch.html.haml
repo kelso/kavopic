@@ -1,0 +1,7 @@
+%li.nav-item.dropdown
+  %a{class: 'nav-link dropdown-toggle', href: '#', id: "navbarDropdown", role: "button", 'data-toggle' => "dropdown", 'aria-haspopup' => "true", 'aria-expanded' => 'false'}
+    Prepnúť sa
+  .dropdown-menu{'aria-labelledby' => "navbarDropdown"}
+    = link_to 'Zákazník', customer_root_path, class: 'dropdown-item' if customer_signed_in?
+    = link_to 'Operátor', operator_root_path, class: 'dropdown-item' if operator_signed_in?
+    = link_to 'Admin', admin_root_path, class: 'dropdown-item' if admin_signed_in?

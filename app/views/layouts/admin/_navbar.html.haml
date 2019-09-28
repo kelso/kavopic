@@ -12,9 +12,9 @@
         = link_to "Zákazníci", admin_customers_path, class: 'nav-link'
 
     %ul.navbar-nav
+      = render_account_switch
+
       - if admin_signed_in?
-        %li.nav-item
-          = link_to "Vrátiť sa späť", root_path, class: 'nav-link'
         %li.nav-item
           = link_to "Odhlásiť sa", destroy_admin_session_path, method: :delete, class: 'nav-link'
       - else

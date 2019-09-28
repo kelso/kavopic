@@ -8,6 +8,8 @@
         = link_to "Moje transakcie", operator_transactions_path, class: 'nav-link'
 
     %ul.navbar-nav
+      = render_account_switch
+
       - if operator_signed_in?
         %li.nav-item
           = link_to "Odhlásiť sa", destroy_operator_session_path, method: :delete, class: 'nav-link'
