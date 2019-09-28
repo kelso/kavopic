@@ -4,8 +4,8 @@
     %span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      -# %li.nav-item
-      -#   = link_to '', '#', class: 'nav-link'
+      %li.nav-item
+        = link_to "Moje transakcie", operator_transactions_path, class: 'nav-link'
 
     %ul.navbar-nav
       - if operator_signed_in?
