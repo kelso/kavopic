@@ -1,0 +1,16 @@
+%h2 Upraviť operátora
+= form_with model: [:admin, @operator] do |f|
+  .form-group
+    = f.label :email
+    = f.text_field :email, disabled: true, class: 'form-control'
+
+  .form-group
+    = f.label :first_name
+    = f.text_field :first_name, class: 'form-control'
+
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: 'form-control'
+
+  = f.submit 'Uložiť', class: 'btn btn-primary'
+  = link_to 'Storno', admin_operators_path, class: 'btn btn-secondary'

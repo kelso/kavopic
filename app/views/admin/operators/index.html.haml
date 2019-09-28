@@ -1,0 +1,19 @@
+%h2 Operátori
+
+.table-responsive
+  %table.table.table-bordered.table-sm
+    %thead
+      %tr
+        %th Meno
+        %th Priezvisko
+        %th E-mail
+        %th Registrácia
+        %th Akcia
+    %tbody
+      - @operators.each do |operator|
+        %tr
+          %td= operator.first_name
+          %td= operator.last_name
+          %td= operator.email
+          %td= l operator.created_at, format: :short
+          %td= link_to 'Upraviť', [:edit, :admin, operator], class: 'btn btn-primary btn-xs'

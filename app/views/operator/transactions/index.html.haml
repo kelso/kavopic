@@ -7,9 +7,11 @@
       %th Zákazník
       %th Aktivita
       %th Zmena na bodoch
+      %th Vytvorené
   %tbody
     - @transactions.each do |transaction|
       %tr
-        %td= transaction.customer.email
+        %td= transaction.customer.full_name
         %td= transaction.transaction_category.name
         %td= transaction.amount
+        %td= l transaction.created_at, format: :short

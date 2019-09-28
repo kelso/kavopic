@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
     resources :transactions, only: [:index, :destroy]
     resources :customers, only: [:index, :edit, :update]
+    resources :operators, only: [:index, :edit, :update]
   end
 
   namespace :customer do
