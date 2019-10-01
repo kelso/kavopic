@@ -15,7 +15,7 @@ class Admin::CustomersController < ApplicationController
 
   def update
     if @customer.update customer_params
-      redirect_to admin_customers_url, notice: 'Zákazník bol uložený.'
+      redirect_to admin_customer_url(@customer), notice: 'Zákazník bol uložený.'
     else
       render :edit
     end
