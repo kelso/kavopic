@@ -1,17 +1,18 @@
 %h2 Transakcie
 %p Transakcie vykonané pod profilom #{current_operator.email}
 
-%table.table.table-bordered
-  %thead
-    %tr
-      %th Zákazník
-      %th Aktivita
-      %th Zmena na bodoch
-      %th Vytvorené
-  %tbody
-    - @transactions.each do |transaction|
+.table-responsive
+  %table.table.table-bordered.table-sm
+    %thead
       %tr
-        %td= transaction.customer.full_name
-        %td= transaction.transaction_category.name
-        %td= transaction.amount
-        %td= l transaction.created_at, format: :short
+        %th Zákazník
+        %th Aktivita
+        %th Zmena na bodoch
+        %th Vytvorené
+    %tbody
+      - @transactions.each do |transaction|
+        %tr
+          %td= transaction.customer.full_name
+          %td= transaction.transaction_category.name
+          %td= transaction.amount
+          %td= l transaction.created_at, format: :short

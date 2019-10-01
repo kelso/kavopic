@@ -1,10 +1,13 @@
 class Admin::OperatorsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :find_operator, only: [:edit, :update]
+  before_action :find_operator, only: [:show, :edit, :update]
   layout 'admin'
 
   def index
     @operators = Operator.order(created_at: :desc)
+  end
+
+  def show
   end
 
   def edit

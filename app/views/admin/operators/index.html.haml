@@ -16,4 +16,6 @@
           %td= operator.last_name
           %td= operator.email
           %td= l operator.created_at, format: :short
-          %td= link_to 'Upraviť', [:edit, :admin, operator], class: 'btn btn-primary btn-xs'
+          %td
+            = link_to 'Zobraziť', [:admin, operator], class: 'btn btn-secondary btn-xs'
+            = link_to 'Upraviť', [:edit, :admin, operator], class: 'btn btn-primary btn-xs'

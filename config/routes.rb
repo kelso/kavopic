@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     # get 'admin/dashboard/realtime' => 'admin/dashboards#realtime', as: :admin_realtime_dashboard
     resources :transactions, only: [:index, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :operators, only: [:index, :edit, :update]
+    resources :operators, only: [:index, :show, :edit, :update]
   end
 
   namespace :customer do

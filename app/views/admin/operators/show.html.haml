@@ -1,0 +1,13 @@
+%h2 Detail operátora
+
+%p
+  Meno: <br>
+  #{@operator.full_name}
+%p
+  E-mail: <br>
+  #{@operator.email}
+%p
+  Dátum vytvorenia:<br>
+  #{l @operator.created_at, format: :long}
+%p
+  = link_to 'Späť na zoznam operátorov', admin_operators_path, class: 'btn btn-secondary'
