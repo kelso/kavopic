@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @sample_item.name
+%p
+  %b Enabled:
+  = @sample_item.enabled
+
+= link_to 'Edit', edit_sample_item_path(@sample_item)
+\|
+= link_to 'Back', sample_items_path

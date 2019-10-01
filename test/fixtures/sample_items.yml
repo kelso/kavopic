@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: Ziskany bod
-  default_amount: 1
+  name: MyString
+  enabled: false
 
 two:
-  name: Kava zadarmo
-  default_amount: -5
+  name: MyString
+  enabled: false

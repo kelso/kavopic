@@ -1,0 +1,2 @@
+class SampleItem < ApplicationRecord
+end

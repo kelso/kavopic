@@ -4,8 +4,10 @@ one:
   amount: 1
   customer: one
   operator: one
+  transaction_category: one
 
 two:
   amount: 1
   customer: one
   operator: one
+  transaction_category: one
