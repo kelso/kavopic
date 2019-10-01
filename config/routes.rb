@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :sample_items
+
   root 'pages#index'
 end
