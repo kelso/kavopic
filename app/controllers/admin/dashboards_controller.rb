@@ -4,4 +4,9 @@ class Admin::DashboardsController < ApplicationController
 
   def show
   end
+
+  # for now as an action
+  def realtime
+    @transactions = Transaction.for_realtime_admin_dashboard
+  end
 end

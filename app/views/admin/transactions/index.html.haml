@@ -19,5 +19,3 @@
           %td= transaction.amount
           %td= l transaction.created_at, format: :short
           %td= link_to 'Odstrániť', [:admin, transaction], method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Určite odstrániť?' }
-
-= link_to 'Späť', admin_dashboard_path, class: 'btn btn-primary btn-sm'

@@ -1,0 +1,13 @@
+%h2 Detail zákazníka
+
+%p
+  Meno: <br>
+  #{@customer.full_name}
+%p
+  Počet bodov na konte: <br>
+  #{@customer.points_sum}
+%p
+  Dátum registrácie:<br>
+  #{l @customer.created_at, format: :long}
+%p
+  = link_to 'Späť na zoznam zákazníkov', admin_customers_path, class: 'btn btn-secondary'
