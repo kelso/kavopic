@@ -1,0 +1,11 @@
+one:
+  first_name: Bob
+  last_name: Joe
+  email: operator1@example.com
+  encrypted_password: <%= Operator.new.send(:password_digest, '123456')
+
+two:
+  first_name: Bob2
+  last_name: Joe2
+  email: operator2@example.com
+  encrypted_password: <%= Operator.new.send(:password_digest, '123456')

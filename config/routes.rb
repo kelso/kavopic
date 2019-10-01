@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show] do
       get :realtime
     end
-    # get 'admin/dashboard/realtime' => 'admin/dashboards#realtime', as: :admin_realtime_dashboard
     resources :transactions, only: [:index, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :operators, only: [:index, :edit, :update]

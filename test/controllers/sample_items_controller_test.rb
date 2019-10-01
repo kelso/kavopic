@@ -20,7 +20,7 @@ class SampleItemsControllerTest < ActionDispatch::IntegrationTest
       post sample_items_url, params: { sample_item: { enabled: @sample_item.enabled, name: @sample_item.name } }
     end
 
-    assert_redirected_to sample_item_url(SampleItem.last)
+    assert_redirected_to sample_item_url(SampleItem.order(:created_at).last)
   end
 
   test "should show sample_item" do
