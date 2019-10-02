@@ -36,12 +36,13 @@ class Operator::TransactionsController < ApplicationController
   end
 
   def broadcast_to_customer_channel
-    points_sum = @customer.points_sum
-    html = ApplicationController.render(partial: 'customer/dashboards/customer_points', locals: { customer_points: points_sum })
+    html1 = ApplicationController.render(partial: 'customer/dashboards/customer_points', locals: { customer: @customer })
+    html2 = ApplicationController.render(partial: 'customer/dashboards/customer_claims', locals: { customer: @customer })
 
     CustomerChannel.broadcast_to(
       @customer,
-      html: html,
+      html1: html1,
+      html2: html2,
     )
   end
 

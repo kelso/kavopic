@@ -1,0 +1,11 @@
+- claims = TransactionCategory.where('default_amount < 0').where('ABS(default_amount) <= ?', customer.points_sum)
+
+.card.mb-3{class: claims.any? ? 'bg-success text-white' : 'bg-warning'}
+  .card-header Výhody ktoré môžem čerpať za moje body
+  .card-body
+    - if claims.any?
+      %ul.claims
+        - claims.each do |claim|
+          %li= claim.name
+    - else
+      %em Prepáč ale zatiaľ nemáš žiadne. Nazbieraj najprv body!

@@ -1,13 +1,27 @@
 %h2 Zákaznícka zóna
+%p Vitaj #{current_customer.first_name}.
 
-#customer_points
-  = render 'customer_points', customer_points: current_customer.points_sum
+.row
+  .col-md
+    #customer_points.mb-4
+      = render 'customer_points', customer: current_customer
 
-.card.mb-3{:style => "max-width: 18rem;"}
-  .card-header Môj QR kód
-  .card-body
-    .bg-white
-      = raw @qr_code
+    #customer_claims
+      = render 'customer_claims', customer: current_customer
 
-%p
-  = link_to @url, @url
+  .col-md
+    = render 'customer_qr_code', customer: current_customer
+
+  .col-md
+    %h5 Často kladené otázky
+    %ul.faq
+      %li
+        = link_to '#' do
+          Čo je služba Kávopič a prečo zbierať body?
+      %li
+        = link_to '#' do
+          Aké výhody si môžem uplatniť za nazbierané body?
+
+- if params[:debug] == '1'
+  %p
+    = link_to @url, @url

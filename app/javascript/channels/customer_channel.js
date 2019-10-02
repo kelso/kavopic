@@ -18,7 +18,11 @@ consumer.subscriptions.create("CustomerChannel", {
     }).play();
 
     // Update points
-    let div = document.getElementById('customer_points');
-    if (div) div.innerHTML = data['html'];
+    let div1 = document.getElementById('customer_points');
+    if (div1) div1.innerHTML = data['html1'];
+
+    // Update claims
+    let div2 = document.getElementById('customer_claims');
+    if (div2) div2.innerHTML = data['html2'];
   }
 });
