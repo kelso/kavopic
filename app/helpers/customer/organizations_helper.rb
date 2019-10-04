@@ -1,0 +1,2 @@
+module Customer::OrganizationsHelper
+end

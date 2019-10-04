@@ -9,6 +9,7 @@
     "bootstrap": "4.3.1",
     "howler": "^2.1.2",
     "jquery": "^3.4.1",
+    "leaflet": "^1.5.1",
     "popper.js": "^1.15.0",
     "turbolinks": "^5.2.0"
   },
