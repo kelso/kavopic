@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load", function() {
 
   var map = L.map('organizations_map', {
     center: [48.221026, 17.423961],
-    zoom: 13
+    zoom: 14
   });
 
   // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -23,13 +23,8 @@ document.addEventListener("turbolinks:load", function() {
   }).addTo(map)
 
   var myIcon = L.icon({
-      iconUrl: 'xmy-icon.png',
-      iconSize: [38, 95],
-      iconAnchor: [22, 94],
-      popupAnchor: [-3, -76],
-      shadowUrl: 'xmy-icon-shadow.png',
-      shadowSize: [68, 95],
-      shadowAnchor: [22, 94]
+      iconUrl: '/map_icons/coffee_icon.png',
+      iconSize: [32, 32],
   });
   var marker = L.marker([48.221026, 17.423961], {icon: myIcon}).addTo(map);
 
