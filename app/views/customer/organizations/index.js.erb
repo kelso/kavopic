@@ -3,6 +3,11 @@ var map = L.map('organizations_map', {
   zoom: 14
 });
 
+var myIcon = L.icon({
+    iconUrl: '/map_icons/coffee_icon.png',
+    iconSize: [32, 32],
+});
+
 // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 // 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 // 	maxZoom: 18,
@@ -15,11 +20,17 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18
 }).addTo(map)
 
-var myIcon = L.icon({
-    iconUrl: '/map_icons/coffee_icon.png',
-    iconSize: [32, 32],
-});
 <% @organizations.each do |organization| %>
   var marker = L.marker([<%= organization.latitude %>, <%= organization.longitude %>], {icon: myIcon}).addTo(map);
   marker.bindPopup("<b><%= organization.name %></b><br>1 bod za kávu")//.openPopup()
 <% end %>
+
+// const onMapClick = function(e) {
+//   const popup = L.popup();
+//   popup.setLatLng(e.latlng);
+//   popup.setContent(`You clicked the map at ${e.latlng}`);
+//   popup.openOn(map);
+//   return console.log(`Coordinate: ${e.latlng}`);
+// };
+//
+// map.on('click', onMapClick);

@@ -1,0 +1,59 @@
+= form_with model: [:admin, @organization] do |f|
+  .row
+    .col
+
+      .form-group
+        = f.label :name, 'Názov'
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        = f.label :street, 'Ulica'
+        = f.text_field :street, class: 'form-control'
+
+      .form-group
+        = f.label :city, 'Mesto'
+        = f.text_field :city, class: 'form-control'
+
+      .form-group
+        = f.label :country, 'Krajina'
+        = f.text_field :country, class: 'form-control'
+
+      .form-group
+        = f.label :latitude, 'Latitude'
+        = f.text_field :latitude, class: 'form-control'
+
+      .form-group
+        = f.label :longitude, 'Longitude'
+        = f.text_field :longitude, class: 'form-control'
+
+    .col-sm
+      %label Poloha
+      #edit_admin_organization_map
+
+  = f.submit 'Uložiť', class: 'btn btn-primary'
+  = link_to 'Storno', admin_organizations_path, class: 'btn btn-secondary'
+
+:javascript
+
+  var map = L.map('edit_admin_organization_map', {
+    center: [#{@organization.latitude}, #{@organization.longitude}],
+    zoom: 15
+  });
+
+  var myIcon = L.icon({
+      iconUrl: '/map_icons/coffee_icon.png',
+      iconSize: [32, 32],
+  });
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 18
+  }).addTo(map)
+
+
+  var marker = L.marker([#{@organization.latitude}, #{@organization.longitude}], {icon: myIcon, draggable: true}).addTo(map);
+
+  marker.on('dragend', function (e) {
+      document.getElementById('organization_latitude').value = marker.getLatLng().lat;
+      document.getElementById('organization_longitude').value = marker.getLatLng().lng;
+  });

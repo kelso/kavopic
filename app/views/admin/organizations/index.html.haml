@@ -1,4 +1,4 @@
-%h2 Organizácie
+%h2 Prevádzky
 
 .table-responsive
   %table.table.table-bordered
@@ -7,7 +7,6 @@
         %th Názov
         %th Ulica
         %th Mesto
-        %th Krajina
         %th Súradnice
         %th Vytvorené
         %th Akcia
@@ -17,7 +16,7 @@
           %td= link_to organization.name, [:admin, organization]
           %td= organization.street
           %td= organization.city
-          %td= organization.country
           %td= organization.to_coordinates
           %td= l organization.created_at, format: :short
           %td
+            = link_to 'Upraviť', edit_admin_organization_path(organization)

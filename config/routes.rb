@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :transactions, only: [:index, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :operators, only: [:index, :show, :edit, :update]
-    resources :organizations, only: [:index, :show, :new, :create, :edit, :update]
+    resources :organizations, except: [:destroy] do
+      patch :geocode, on: :member
+    end
   end
 
   namespace :customer do
