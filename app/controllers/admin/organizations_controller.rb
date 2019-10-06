@@ -1,6 +1,6 @@
 class Admin::OrganizationsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :find_organization, only: [:show, :edit, :update, :geocode]
+  before_action :find_organization, only: [:show, :edit, :update, :destroy, :geocode]
   layout 'admin'
 
   def index
@@ -11,9 +11,16 @@ class Admin::OrganizationsController < ApplicationController
   end
 
   def new
+    @organization = Organization.new
   end
 
   def create
+    @organization = Organization.new organization_params
+    if @organization.save
+      redirect_to [:admin, @organization], notice: 'Prevádzka bola pridaná'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,6 +32,11 @@ class Admin::OrganizationsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @organization.destroy
+    redirect_to admin_organizations_url, notice: 'Prevádzka bola odstránená.'
   end
 
   def geocode

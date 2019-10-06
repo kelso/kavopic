@@ -1,5 +1,10 @@
 %h2 Prevádzky
 
+.mb-3
+  = link_to 'Pridať prevádzku',
+    new_admin_organization_path,
+    class: 'btn btn-primary'
+
 .table-responsive
   %table.table.table-bordered
     %thead
@@ -19,4 +24,15 @@
           %td= organization.to_coordinates
           %td= l organization.created_at, format: :short
           %td
-            = link_to 'Upraviť', edit_admin_organization_path(organization)
+            .btn-group
+              = link_to 'Upraviť',
+                edit_admin_organization_path(organization),
+                class: 'btn btn-secondary btn-sm'
+              .btn-group
+                %button{id: "btnGroupDrop1", class: "btn btn-secondary btn-sm dropdown-toggle", 'data-toggle' => "dropdown", 'aria-haspopup' => "true", 'aria-expanded' => "false"}
+                .dropdown-menu
+                  = link_to 'Odstrániť',
+                    admin_organization_path(organization),
+                    method: :delete,
+                    data: { confirm: 'Určite odstrániť?' },
+                    class: 'dropdown-item'
