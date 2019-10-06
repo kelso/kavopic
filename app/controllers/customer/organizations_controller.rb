@@ -3,7 +3,6 @@ class Customer::OrganizationsController < ApplicationController
   layout 'customer'
 
   def index
-    # TODO:
-    # @organizations = Organization.all
+    @organizations = Organization.order(created_at: :desc)
   end
 end
