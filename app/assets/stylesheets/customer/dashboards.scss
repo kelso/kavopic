@@ -1,0 +1,9 @@
+#customer_points h2 {
+	animation: blinkingText 1.5s 1;
+}
+
+@keyframes blinkingText{
+	10%{		color: inherit;	}
+	55%{	color: transparent;	}
+	100%{	color: inherit;	}
+}
