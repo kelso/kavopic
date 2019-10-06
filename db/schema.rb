@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_065835) do
+ActiveRecord::Schema.define(version: 2019_10_06_075026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -109,6 +109,9 @@ ActiveRecord::Schema.define(version: 2019_10_05_065835) do
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
+    t.index ["latitude", "longitude"], name: "index_organizations_on_latitude_and_longitude"
     t.index ["lonlat"], name: "index_organizations_on_lonlat", using: :gist
   end
 
