@@ -56,3 +56,22 @@ data.each do |name, default_amount|
     default_amount: default_amount
   ).first_or_create!
 end
+
+# Organizations
+
+organizations = [
+  ['Penzion SENEC', 'Slnečné jazerá 2604', 'Senec'],
+  ['Dance Arena', 'Sokolská 10', 'Senec'],
+]
+
+organizations.each do |name, street, city, country|
+  o = Organization
+    .where(
+      name: name
+    )
+    .first_or_create!(
+      street: street,
+      city: city,
+      country: 'Slovensko',
+    )
+end

@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_01_124031) do
+ActiveRecord::Schema.define(version: 2019_10_05_065835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -98,6 +99,17 @@ ActiveRecord::Schema.define(version: 2019_10_01_124031) do
     t.index ["email"], name: "index_operators_on_email", unique: true
     t.index ["reset_password_token"], name: "index_operators_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_operators_on_unlock_token", unique: true
+  end
+
+  create_table "organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "street"
+    t.string "city"
+    t.string "country"
+    t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["lonlat"], name: "index_organizations_on_lonlat", using: :gist
   end
 
   create_table "sample_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

@@ -1,0 +1,23 @@
+%h2 Organizácie
+
+.table-responsive
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Názov
+        %th Ulica
+        %th Mesto
+        %th Krajina
+        %th Súradnice
+        %th Vytvorené
+        %th Akcia
+    %tbody
+      - @organizations.each do |organization|
+        %tr
+          %td= link_to organization.name, [:admin, organization]
+          %td= organization.street
+          %td= organization.city
+          %td= organization.country
+          %td= organization.lonlat
+          %td= l organization.created_at, format: :short
+          %td
