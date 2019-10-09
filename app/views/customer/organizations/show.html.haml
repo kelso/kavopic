@@ -1,0 +1,42 @@
+%h2 Detail prevádzky
+
+.row
+  .col-sm
+    %p
+      Názov: <br>
+      #{@organization.name}
+    %p
+      Adresa: <br>
+      #{@organization.address}
+    %p
+      Súradnice: <br>
+      #{@organization.to_coordinates}
+    %p
+      Dátum vytvorenia:<br>
+      #{l @organization.created_at, format: :long}
+    %p
+      = link_to 'Späť na mapu',
+        customer_organizations_path,
+        class: 'btn btn-primary btn-sm'
+  .col-sm
+    #admin_organization_map
+
+:javascript
+
+  var map = L.map('admin_organization_map', {
+    center: [#{@organization.latitude}, #{@organization.longitude}],
+    zoom: 16
+  });
+
+  var myIcon = L.icon({
+      iconUrl: '/map_icons/coffee_icon.png',
+      iconSize: [32, 32],
+  });
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 18
+  }).addTo(map)
+
+
+  var marker = L.marker([#{@organization.latitude}, #{@organization.longitude}], {icon: myIcon}).addTo(map);

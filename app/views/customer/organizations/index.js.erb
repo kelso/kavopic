@@ -1,6 +1,6 @@
 var map = L.map('organizations_map', {
-  center: [48.221026, 17.423961],
-  zoom: 14
+  center: <%= @geographic_center %>,
+  zoom: 15
 });
 
 var myIcon = L.icon({
@@ -22,7 +22,10 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 <% @organizations.each do |organization| %>
   var marker = L.marker([<%= organization.latitude %>, <%= organization.longitude %>], {icon: myIcon}).addTo(map);
-  marker.bindPopup("<b><%= organization.name %></b><br>1 bod za kávu")//.openPopup()
+  // marker.bindPopup("<b><%= organization.name %></b><br>1 bod za kávu")//.openPopup()
+  marker.on('click', function() {
+    Turbolinks.visit('<%= customer_organization_url(organization) %>')
+  });
 <% end %>
 
 // const onMapClick = function(e) {

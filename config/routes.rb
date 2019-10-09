@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   namespace :customer do
     root to: 'dashboards#show'
     resource :dashboard, only: [:show]
-    resources :organizations, only: [:index]
+    resources :organizations, only: [:index, :show]
   end
 
   namespace :operator do
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # TODO: resources :organizations, only: [:index, :show]
   resources :sample_items
 
   root 'pages#index'
