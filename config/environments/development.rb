@@ -62,4 +62,15 @@ Rails.application.configure do
 
   # Mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # May be removed and used in production.rb only
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: Rails.application.credentials.mailgun[:address],
+    port: 587,
+    domain: Rails.application.credentials.mailgun[:domain],
+    user_name: Rails.application.credentials.mailgun[:user_name],
+    password: Rails.application.credentials.mailgun[:password]
+  }
 end

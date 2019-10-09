@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :customers
+  devise_for :customers, controllers: { confirmations: 'customer/confirmations' }
   devise_for :operators
 
   namespace :admin do

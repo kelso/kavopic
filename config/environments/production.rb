@@ -111,9 +111,16 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Mailer
-  config.action_mailer.default_url_options = { host: 'kavickar.com' }
+  config.action_mailer.default_url_options = { host: '104.248.132.216' }
 
-
-  # TODO: Trying to disable mails temporarily, remove later and setup email delivery
-  config.action_mailer.delivery_method = :test
+  # May be removed and used in production.rb only
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    authentication: :plain,
+    address: Rails.application.credentials.mailgun[:address],
+    port: 587,
+    domain: Rails.application.credentials.mailgun[:domain],
+    user_name: Rails.application.credentials.mailgun[:user_name],
+    password: Rails.application.credentials.mailgun[:password]
+  }
 end
