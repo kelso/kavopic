@@ -9,6 +9,7 @@
   %table.table.table-bordered
     %thead
       %tr
+        %th
         %th Názov
         %th Ulica
         %th Mesto
@@ -18,10 +19,14 @@
     %tbody
       - @organizations.each do |organization|
         %tr
+          %td.text-center.bg-light
+            - unless organization.geocoded?
+              = content_tag :span, '!', class: 'text-danger', title: 'Nezobrazuje sa na mape, chýba poloha'
           %td= link_to organization.name, [:admin, organization]
           %td= organization.street
           %td= organization.city
-          %td= organization.to_coordinates
+          %td
+            = organization.to_coordinates.join(', ') if organization.geocoded?
           %td= l organization.created_at, format: :short
           %td
             .btn-group

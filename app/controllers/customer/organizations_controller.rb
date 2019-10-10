@@ -3,7 +3,7 @@ class Customer::OrganizationsController < ApplicationController
   layout 'customer'
 
   def index
-    @organizations = Organization.order(created_at: :desc)
+    @organizations = Organization.geocoded.order(created_at: :desc)
     @geographic_center = Geocoder::Calculations.geographic_center(@organizations)
   end
 
