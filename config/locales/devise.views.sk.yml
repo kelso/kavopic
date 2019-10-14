@@ -32,7 +32,7 @@ sk:
       admin:
         <<: *generic
     models:
-      user: Používateľ
+      customer: Zákazník
   devise:
     confirmations:
       confirmed: Váš účet bol úspešne overený. Teraz ste prihlásený.

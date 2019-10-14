@@ -1,0 +1,15 @@
+.row.justify-content-md-center
+  .col-md-8
+    .card.mb-4.border-primary
+      .card-header.bg-primary.text-white
+        = t('.resend_unlock_instructions')
+      .card-body
+        = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+          .form-group
+            = f.submit t('.resend_unlock_instructions'), class: 'btn btn-primary'
+
+    = render "devise/shared/links"
