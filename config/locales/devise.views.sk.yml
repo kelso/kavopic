@@ -1,7 +1,7 @@
 sk:
   activerecord:
     attributes:
-      user:
+      generic: &generic
         confirmation_sent_at: Potvrdenie poslané
         confirmation_token: Potvrdzovací kľúč
         confirmed_at: Potvrdené
@@ -9,7 +9,7 @@ sk:
         current_password: Súčasné heslo
         current_sign_in_at: Súčasné prihlásenie
         current_sign_in_ip: IP adresa súčasného prihlásenia
-        email: Email
+        email: E-mail
         encrypted_password: Zašifrované heslo
         failed_attempts: Zlé pokusy
         last_sign_in_at: Posledné prihlásenie
@@ -25,6 +25,12 @@ sk:
         unconfirmed_email: Nepotvrdený email
         unlock_token: Odomykací kľúč
         updated_at: Aktualizované
+      customer:
+        <<: *generic
+      operator:
+        <<: *generic
+      admin:
+        <<: *generic
     models:
       user: Používateľ
   devise:
@@ -107,7 +113,7 @@ sk:
       signed_up_but_unconfirmed: Správa s potvrdzovacím odkazom bola odoslaná na vašu emailovú adresu. Aby ste aktivovali váš účet, prosím otvorte odkaz..
       update_needs_confirmation: Váš účet bol úspešne aktualizovaný ale potrebujeme overiť vašu novú emailovú adresu. Prosím skontrolujte si email a kliknite na potvrdzovací odkaz, aby ste potvrdili novú emailovú adresu.
       updated: Úspešne ste aktualizovali váš účet.
-      updated_but_not_signed_in: 
+      updated_but_not_signed_in:
     sessions:
       already_signed_out: Úspešne odhlásený.
       new:
