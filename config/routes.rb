@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   # TODO: resources :organizations, only: [:index, :show]
   resources :sample_items
 
+  get 'about' => 'pages#about', as: :about
   root 'pages#index'
 end

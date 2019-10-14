@@ -1,2 +1,32 @@
-%h2 Kávopič
-%p Vitaj.
+#carouselExampleSlidesOnly.carousel.slide.mb-5{"data-ride" => "carousel"}
+  .carousel-inner
+    .carousel-item.active
+      = image_tag 'pages/index/customer_sign_in.jpg', class: 'd-block w-100'
+    .carousel-item
+      = image_tag 'pages/index/operator_sign_in.jpg', class: 'd-block w-100'
+
+
+.card-deck
+  .card.bg-light.border-light.mb-3
+    .row.no-gutters
+      .col-md-4
+        = link_to customer_dashboard_path do
+          = image_tag 'pages/index/customer_sign_in.jpg', class: 'card-img'
+      .col-md-8
+        .card-body
+          %h5.card-title Získavaj body pitím kávy
+          %p.card-text Nazbierané body za kávu využívaš na ďalšie výhody.
+          %p
+            = link_to "Vstupiť ako zákazník", customer_dashboard_path, class: 'btn btn-primary btn-lg'
+
+  .card.bg-light.border-light.mb-3
+    .row.no-gutters
+      .col-md-4
+        = link_to operator_dashboard_path do
+          = image_tag 'pages/index/operator_sign_in.jpg', class: 'card-img'
+      .col-md-8
+        .card-body
+          %h5.card-title Odmeňuj verných zákazníkov
+          %p.card-text Si barista a patríš do prevádzky v našom systéme? Tu sa prihlásiš.
+          %p
+            = link_to "Vstupiť ako barista", operator_dashboard_path, class: 'btn btn-secondary btn-lg'
