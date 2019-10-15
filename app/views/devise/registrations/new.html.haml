@@ -1,5 +1,7 @@
+%h1.display-4.mb-3 Registrácia
+
 .row.justify-content-md-center
-  .col-md-6
+  .col-md-4
     .card.mb-4.border-primary
       .card-header.bg-primary.text-white
         = t('.sign_up')
@@ -21,3 +23,7 @@
             = f.submit t('.sign_up'), class: 'btn btn-primary'
 
     = render "devise/shared/links"
+
+  .col-md-8
+    - if resource_name == :customer
+      = image_tag 'pages/index/customer_sign_up.svg', class: 'img-fluid'

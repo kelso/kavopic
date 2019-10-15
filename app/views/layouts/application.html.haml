@@ -14,6 +14,6 @@
       - if notice.present?
         = content_tag :div, notice, class: 'alert alert-info'
       - if alert.present?
-        = content_tag :div, alert, class: 'alert alert-danger'
+        = content_tag :div, alert, class: 'alert alert-info'
 
       = yield

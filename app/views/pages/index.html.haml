@@ -1,10 +1,15 @@
-#carouselExampleSlidesOnly.carousel.slide.mb-5{"data-ride" => "carousel"}
-  .carousel-inner
-    .carousel-item.active
-      = image_tag 'pages/index/customer_sign_in.jpg', class: 'd-block w-100'
-    .carousel-item
-      = image_tag 'pages/index/operator_sign_in.jpg', class: 'd-block w-100'
+-# #carouselExampleSlidesOnly.carousel.slide.mb-5{"data-ride" => "carousel"}
+-#   .carousel-inner
+-#     .carousel-item.active
+-#       = image_tag 'pages/index/customer_sign_in.jpg', class: 'd-block w-100'
+-#     .carousel-item
+-#       = image_tag 'pages/index/operator_sign_in.jpg', class: 'd-block w-100'
 
+.jumbotron
+  %h1.display-4 Máš rád kávu?
+  %p.lead Potom si tu správne. Pozri sa do mapy, kde všade si môžeš dať kávu z našej siete.
+  #generic_organizations_map
+  = link_to "Zobraziť celú mapu", "#", class: 'btn btn-primary'
 
 .card-deck
   .card.bg-light.border-light.mb-3
@@ -30,3 +35,26 @@
           %p.card-text Si barista a patríš do prevádzky v našom systéme? Tu sa prihlásiš.
           %p
             = link_to "Vstupiť ako barista", operator_dashboard_path, class: 'btn btn-secondary btn-lg'
+
+- @organization = Organization.first
+:javascript
+
+  var map = L.map('generic_organizations_map', {
+    center: [#{@organization.latitude}, #{@organization.longitude}],
+    zoom: 15
+  });
+
+  map.scrollWheelZoom.disable();
+
+  var myIcon = L.icon({
+      iconUrl: '/map_icons/coffee_icon.png',
+      iconSize: [32, 32],
+  });
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 18
+  }).addTo(map)
+
+
+  var marker = L.marker([#{@organization.latitude}, #{@organization.longitude}], {icon: myIcon}).addTo(map);
