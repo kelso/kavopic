@@ -1,10 +1,12 @@
 .row.justify-content-md-center
-  .col-md-6
+
+  .col-md-4
     .card.mb-4.border-primary
       .card-header.bg-primary.text-white
         = t('.sign_in')
       .card-body
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+
           .form-group
             = f.label :email
             = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
@@ -18,5 +20,10 @@
               = f.label :remember_me
           %div
             = f.submit t('.sign_in'), class: 'btn btn-primary'
-
     = render "devise/shared/links"
+
+  .col-md-8
+    - if resource_name == :operator
+      = image_tag 'pages/index/operator_sign_in.svg', class: 'img-fluid'
+    - if resource_name == :customer
+      = image_tag 'pages/index/customer_sign_in.svg', class: 'img-fluid'
