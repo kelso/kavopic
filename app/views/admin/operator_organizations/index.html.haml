@@ -1,0 +1,31 @@
+%h2 Operátori prevádzky "#{@organization.name}"
+
+.mb-3
+  = link_to 'Pridať operátora',
+    new_admin_organization_operator_organization_path(@organization),
+    class: 'btn btn-primary'
+
+.table-responsive
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th Meno
+        %th Počet transakcií
+        %th Správca
+        %th Vytvorené
+        %th Akcia
+    %tbody
+      - @operator_organizations.each do |operator_organization|
+        %tr
+          %td= link_to operator_organization.operator.full_name, [:admin, operator_organization.operator]
+
+          -# TODO: optimalize N+1 here
+          %td= operator_organization.operator.transactions.where(organization: @organization).size
+          %td= operator_organization.organization_manager? ? 'Áno' : 'Nie'
+          %td= l operator_organization.created_at, format: :short
+          %td
+            = link_to 'Odstrániť',
+              admin_organization_operator_organization_path(@organization, operator_organization),
+              method: :delete,
+              data: { confirm: 'Určite odstrániť?' },
+              class: 'btn btn-danger btn-sm'

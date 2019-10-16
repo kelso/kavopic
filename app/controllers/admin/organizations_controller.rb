@@ -4,7 +4,7 @@ class Admin::OrganizationsController < ApplicationController
   layout 'admin'
 
   def index
-    @organizations = Organization.order(created_at: :desc)
+    @organizations = Organization.includes(:transactions).order(created_at: :desc)
   end
 
   def show

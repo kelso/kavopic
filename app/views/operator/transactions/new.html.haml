@@ -1,22 +1,44 @@
+%h1.title-4.mb-3 Vykonať akciu
 = form_with model: [:operator, @customer, @transaction] do |f|
-  %h2 Zákazník
-  %table.table-bordered.table-sm.mb-3
-    %tbody
-      %tr
-        %th Meno
-        %td= @customer.full_name
-      %tr
-        %th E-mail
-        %td= @customer.email
-      %tr
-        %th Aktuálny počet bodov
-        %td= @customer.transactions.sum(:amount)
+  .card-deck
+    .card
+      .card-header
+        %h5.mb-0
+          Od prevádzky
+      .card-body
+        .form-group
+          %label Akcia
+          %div
+            - TransactionCategory.all.each do |tc|
+              = f.radio_button :transaction_category_id, tc.id
+              = f.label :"transaction_category_id_#{tc.id}", tc.name
+              %br
 
-  %h2 Vykonať akciu
-  - TransactionCategory.all.each do |tc|
-    = f.radio_button :transaction_category_id, tc.id
-    = f.label :"transaction_category_id_#{tc.id}", tc.name
-    %br
+        .form-group
+          = f.label :organization_id, 'Prevádzka'
+          - if current_operator.organizations.any?
+            = f.select :organization_id, current_operator.organizations.collect{ |o| [o.name, o.id]}, {}, { class: 'form-control' }
+          - else
+            .text-danger
+              Nemáte pridelenú žiadnu prevádzku. Nie je možné pokračovať.
 
-  %div
-    = f.submit 'Vykonať', class: 'btn btn-primary'
+        .form-group
+          = f.label :operator_id, 'Operátor'
+          %br
+          = current_operator.full_name
+
+        %div
+          = f.submit 'Vykonať', class: 'btn btn-primary pl-4 pr-4'
+
+    .card
+      .card-header
+        %h5.mb-0
+          Pre zákazníka
+      .card-body
+        %dl
+          %dt Meno
+          %dd= @customer.full_name
+          %dt E-mail
+          %dd= @customer.email
+          %dt Aktuálny počet bodov
+          %dd= @customer.transactions.sum(:amount)

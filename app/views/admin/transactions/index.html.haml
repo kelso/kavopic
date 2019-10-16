@@ -6,8 +6,9 @@
       %tr
         %th Zákazník
         %th Operátor
+        %th Prevádzka
         %th Aktivita
-        %th Zmena na bodoch
+        -# %th Zmena na bodoch
         %th Vytvorené
         %th Akcia
     %tbody
@@ -15,7 +16,10 @@
         %tr
           %td= link_to transaction.customer.full_name, [:admin, transaction.customer]
           %td= link_to transaction.operator.full_name, [:admin, transaction.operator]
+          %td
+            - if transaction.organization.present?
+              = link_to transaction.organization.name, [:admin, transaction.organization]
           %td= transaction.transaction_category.name
-          %td= transaction.amount
+          -# %td= transaction.amount
           %td= l transaction.created_at, format: :short
           %td= link_to 'Odstrániť', [:admin, transaction], method: :delete, class: 'btn btn-danger btn-xs', data: { confirm: 'Určite odstrániť?' }

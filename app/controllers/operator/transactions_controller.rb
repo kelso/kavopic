@@ -32,7 +32,7 @@ class Operator::TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:transaction_category_id)
+    params.require(:transaction).permit(:transaction_category_id, :organization_id)
   end
 
   def broadcast_to_customer_channel

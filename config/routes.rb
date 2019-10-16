@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :operators, only: [:index, :show, :edit, :update]
     resources :organizations do
       patch :geocode, on: :member
+      resources :operator_organizations
     end
   end
 

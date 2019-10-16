@@ -11,9 +11,10 @@
       %tr
         %th
         %th Názov
-        %th Ulica
-        %th Mesto
-        %th Súradnice
+        -# %th Ulica
+        -# %th Mesto
+        -# %th Súradnice
+        %th Počet transakcií
         %th Vytvorené
         %th Akcia
     %tbody
@@ -23,12 +24,17 @@
             - unless organization.geocoded?
               = content_tag :span, '!', class: 'text-danger', title: 'Nezobrazuje sa na mape, chýba poloha'
           %td= link_to organization.name, [:admin, organization]
-          %td= organization.street
-          %td= organization.city
-          %td
-            = organization.to_coordinates.join(', ') if organization.geocoded?
+          -# %td= organization.street
+          -# %td= organization.city
+          -# %td
+          -#   = organization.to_coordinates.join(', ') if organization.geocoded?
+
+          %td= organization.transactions.size
           %td= l organization.created_at, format: :short
           %td
+            = link_to 'Operátori',
+              admin_organization_operator_organizations_path(organization),
+              class: 'btn btn-secondary btn-sm'
             .btn-group
               = link_to 'Upraviť',
                 edit_admin_organization_path(organization),

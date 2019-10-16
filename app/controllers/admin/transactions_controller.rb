@@ -3,7 +3,7 @@ class Admin::TransactionsController < ApplicationController
   layout 'admin'
 
   def index
-    @transactions = Transaction.includes(:customer, :operator, :transaction_category).order(created_at: :desc)
+    @transactions = Transaction.includes(:customer, :operator, :organization, :transaction_category).order(created_at: :desc)
   end
 
   def destroy
