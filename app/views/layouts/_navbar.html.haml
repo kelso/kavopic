@@ -12,7 +12,9 @@
 
       %ul.navbar-nav
         %li.nav-item
-          = link_to "Zákaznícka zóna - vstúpiť", customer_dashboard_path, class: 'btn-primary btn'
+          = link_to "Prihlásenie", new_customer_session_path, class: 'nav-link text-primary'
+        %li.nav-item
+          = link_to "Registrácia", new_customer_registration_path, class: 'nav-link text-success'
 
     -# %ul.navbar-nav
     -#   - if user_signed_in?

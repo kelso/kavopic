@@ -5,57 +5,60 @@
 -#     .carousel-item
 -#       = image_tag 'pages/index/operator_sign_in.jpg', class: 'd-block w-100'
 
-.jumbotron
-  %h1.display-4 Máš rád kávu?
-  %p.lead Potom si tu správne. Pozri sa do mapy, kde všade si môžeš dať kávu z našej siete.
-  #generic_organizations_map
-  = link_to "Zobraziť celú mapu", "#", class: 'btn btn-primary'
+-# TODO: docasne vypnute
+-# .jumbotron
+-#   %h1.display-4 Máš rád kávu?
+-#   %p.lead Potom si tu správne. Pozri sa do mapy, kde všade si môžeš dať kávu z našej siete.
+-#   #generic_organizations_map
+-#   = link_to "Zobraziť celú mapu", "#", class: 'btn btn-primary'
 
-.card-deck
-  .card.bg-light.border-light.mb-3
-    .row.no-gutters
-      .col-md-4
-        = link_to customer_dashboard_path do
-          = image_tag 'pages/index/customer_sign_in.jpg', class: 'card-img'
-      .col-md-8
-        .card-body
-          %h5.card-title Získavaj body pitím kávy
-          %p.card-text Nazbierané body za kávu využívaš na ďalšie výhody.
-          %p
-            = link_to "Vstupiť ako zákazník", customer_dashboard_path, class: 'btn btn-primary btn-lg'
+%h1.title-4 Vitaj,
 
-  .card.bg-light.border-light.mb-3
-    .row.no-gutters
-      .col-md-4
-        = link_to operator_dashboard_path do
-          = image_tag 'pages/index/operator_sign_in.jpg', class: 'card-img'
-      .col-md-8
-        .card-body
-          %h5.card-title Odmeňuj verných zákazníkov
-          %p.card-text Si barista a patríš do prevádzky v našom systéme? Tu sa prihlásiš.
-          %p
-            = link_to "Vstupiť ako barista", operator_dashboard_path, class: 'btn btn-secondary btn-lg'
+.card.bg-light.border-light.mb-3
+  .row.no-gutters
+    .col-md-4
+      = link_to customer_dashboard_path do
+        = image_tag 'pages/index/customer_sign_in.jpg', class: 'card-img'
+    .col-md-8
+      .card-body
+        %h5.card-title Získavaj body pitím kávy
+        %p.card-text Nazbierané body za kávu využívaš na ďalšie výhody.
+        %p
+          = link_to "Vstupiť ako zákazník", customer_dashboard_path, class: 'btn btn-primary btn-lg'
 
--# TODO: upratat
-- @organization = Organization.geocoded.first
-:javascript
+.card.bg-light.border-light.mb-3
+  .row.no-gutters
+    .col-md-4
+      = link_to operator_dashboard_path do
+        = image_tag 'pages/index/operator_sign_in.jpg', class: 'card-img'
+    .col-md-8
+      .card-body
+        %h5.card-title Odmeňuj verných zákazníkov
+        %p.card-text Si barista a patríš do prevádzky v našom systéme? Tu sa prihlásiš.
+        %p
+          = link_to "Vstupiť ako barista", operator_dashboard_path, class: 'btn btn-secondary btn-lg'
 
-  var map = L.map('generic_organizations_map', {
-    center: [#{@organization.latitude}, #{@organization.longitude}],
-    zoom: 15
-  });
-
-  map.scrollWheelZoom.disable();
-
-  var myIcon = L.icon({
-      iconUrl: '/map_icons/coffee_icon.png',
-      iconSize: [32, 32],
-  });
-
-  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-    maxZoom: 18
-  }).addTo(map)
-
-
-  var marker = L.marker([#{@organization.latitude}, #{@organization.longitude}], {icon: myIcon}).addTo(map);
+-# TODO: docasne dokonca vypnute
+-# -# TODO: upratat
+-# - @organization = Organization.geocoded.first
+-# :javascript
+-#
+-#   var map = L.map('generic_organizations_map', {
+-#     center: [#{@organization.latitude}, #{@organization.longitude}],
+-#     zoom: 15
+-#   });
+-#
+-#   map.scrollWheelZoom.disable();
+-#
+-#   var myIcon = L.icon({
+-#       iconUrl: '/map_icons/coffee_icon.png',
+-#       iconSize: [32, 32],
+-#   });
+-#
+-#   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+-#     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+-#     maxZoom: 18
+-#   }).addTo(map)
+-#
+-#
+-#   var marker = L.marker([#{@organization.latitude}, #{@organization.longitude}], {icon: myIcon}).addTo(map);

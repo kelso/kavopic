@@ -1,14 +1,12 @@
-%h1.display-4.mb-3 Prihlásenie
+%h1.display-4.mb-3.text-primary
+  = t('.sign_in')
 
-.row.justify-content-md-center
+.row
 
-  .col-md-4
+  .col-lg-4
     .card.mb-4.border-primary
-      .card-header.bg-primary.text-white
-        = t('.sign_in')
       .card-body
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-
           .form-group
             = f.label :email
             = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
@@ -22,10 +20,10 @@
               = f.label :remember_me
           %div
             = f.submit t('.sign_in'), class: 'btn btn-primary'
-    = render "devise/shared/links"
+    .mb-4= render "devise/shared/links"
 
-  .col-md-8
+  .col-lg-6.offset-lg-1.col-sm-10.offset-sm-1
     - if resource_name == :operator
-      = image_tag 'pages/index/operator_sign_in.svg', class: 'img-fluid'
+      = image_tag 'pages/index/operator_sign_in.svg', class: 'img-fluid mb-3'
     - if resource_name == :customer
-      = image_tag 'pages/index/customer_sign_in.svg', class: 'img-fluid'
+      = image_tag 'pages/index/customer_sign_in.svg', class: 'img-fluid mb-3'
