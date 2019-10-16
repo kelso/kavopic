@@ -1,27 +1,32 @@
 %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-  = link_to 'Kávopič', admin_root_path, class: 'navbar-brand'
-  %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      %li.nav-item
-        = link_to "Transakcie", admin_transactions_path, class: 'nav-link'
-      %li.nav-item
-        = link_to "Zákazníci", admin_customers_path, class: 'nav-link'
-      %li.nav-item
-        = link_to "Operátori", admin_operators_path, class: 'nav-link'
-      %li.nav-item
-        = link_to "Real-Time", realtime_admin_dashboard_path, class: 'nav-link'
-      %li.nav-item
-        = link_to "Prevádzky", admin_organizations_path, class: 'nav-link'
-
-
-    %ul.navbar-nav
-      = render_account_switch
-
-      - if admin_signed_in?
+  .container
+    = link_to admin_root_path, class: 'navbar-brand' do
+      %i.fas.fa-unlock-alt.text-warning.mr-1
+      Kávopič
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
         %li.nav-item
-          = link_to "Odhlásiť sa", destroy_admin_session_path, method: :delete, class: 'nav-link'
-      - else
+          = link_to "Transakcie", admin_transactions_path, class: 'nav-link'
         %li.nav-item
-          = link_to "Prihlásiť sa", new_admin_session_path, class: 'nav-link'
+          = link_to "Transakcie", admin_transactions_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Zákazníci", admin_customers_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Operátori", admin_operators_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Real-Time", realtime_admin_dashboard_path, class: 'nav-link'
+        %li.nav-item
+          = link_to "Prevádzky", admin_organizations_path, class: 'nav-link'
+
+
+      %ul.navbar-nav
+        = render_account_switch
+
+        - if admin_signed_in?
+          %li.nav-item
+            = link_to "Odhlásiť sa", destroy_admin_session_path, method: :delete, class: 'nav-link'
+        - else
+          %li.nav-item
+            = link_to "Prihlásiť sa", new_admin_session_path, class: 'nav-link'
