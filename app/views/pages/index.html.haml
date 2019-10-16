@@ -36,7 +36,8 @@
           %p
             = link_to "Vstupiť ako barista", operator_dashboard_path, class: 'btn btn-secondary btn-lg'
 
-- @organization = Organization.first
+-# TODO: upratat
+- @organization = Organization.geocoded.first
 :javascript
 
   var map = L.map('generic_organizations_map', {
