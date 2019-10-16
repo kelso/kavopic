@@ -25,6 +25,13 @@
     method: :patch,
     class: 'btn btn-secondary',
     data: { confirm: 'Súčasné súradnice (ak existujú) budú nahradené. Pokračovať?' }
+  = link_to 'Operátori',
+    admin_organization_operator_organizations_path(@organization),
+    class: 'btn btn-secondary'
+  = link_to 'Transakcie',
+    admin_organization_transactions_path(@organization),
+    class: 'btn btn-secondary'
+
   = link_to 'Späť na zoznam prevádzok', admin_organizations_path, class: 'btn btn-secondary'
 
 

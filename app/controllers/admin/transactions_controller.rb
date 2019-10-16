@@ -4,6 +4,9 @@ class Admin::TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.includes(:customer, :operator, :organization, :transaction_category).order(created_at: :desc)
+    if params[:organization_id].present?
+      @transactions = @transactions.where(organization: params[:organization_id])
+    end
   end
 
   def destroy

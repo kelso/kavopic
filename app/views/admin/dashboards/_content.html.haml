@@ -1,15 +1,17 @@
-- transactions.group_by{ |t| t.created_at.to_date}.each do |date, transactions|
-  .mb-4
-    %h5= l date
+.row
+  - transactions.group_by{ |t| t.created_at.to_date}.each do |date, transactions|
+    .col-md-4
+      .mb-4
+        %h5= l date
 
-    - transactions.each do |transaction|
-      -# TODO introduce some code names
-      - case transaction.transaction_category.name
-        - when '+1 bod za kávu'
-          .alert.alert-success
-            = transaction.created_at.strftime("%H:%M")
-            &mdash; #{link_to(transaction.customer.full_name, [:admin, transaction.customer], class: 'alert-link')} si v #{transaction.organization.present? ? link_to(transaction.organization&.name, admin_organization_path(transaction.organization), class: 'alert-link') : '-'} zakúpil kávu a získal bod.
-        - when 'Uplatniť kávu zadarmo'
-          .alert.alert-warning
-            = transaction.created_at.strftime("%H:%M")
-            &mdash; #{link_to(transaction.customer.full_name, [:admin, transaction.customer], class: 'alert-link')} v #{transaction.organization.present? ? link_to(transaction.organization&.name, admin_organization_path(transaction.organization), class: 'alert-link') : '-'} získal kávu zadarmo.
+        - transactions.each do |transaction|
+          -# TODO introduce some code names
+          - case transaction.transaction_category.name
+            - when '+1 bod za kávu'
+              .alert.alert-success
+                = transaction.created_at.strftime("%H:%M")
+                &mdash; #{link_to(transaction.customer.full_name, [:admin, transaction.customer], class: 'alert-link')} si v&nbsp;#{transaction.organization.present? ? link_to(transaction.organization&.name, admin_organization_path(transaction.organization), class: 'alert-link') : '-'} zakúpil kávu a získal bod.
+            - when 'Uplatniť kávu zadarmo'
+              .alert.alert-warning
+                = transaction.created_at.strftime("%H:%M")
+                &mdash; #{link_to(transaction.customer.full_name, [:admin, transaction.customer], class: 'alert-link')} v&nbsp;#{transaction.organization.present? ? link_to(transaction.organization&.name, admin_organization_path(transaction.organization), class: 'alert-link') : '-'} získal kávu zadarmo.
