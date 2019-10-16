@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_06_075026) do
+ActiveRecord::Schema.define(version: 2019_10_16_170946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(version: 2019_10_06_075026) do
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_customers_on_unlock_token", unique: true
+  end
+
+  create_table "operator_organizations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "operator_id", null: false
+    t.uuid "organization_id", null: false
+    t.boolean "organization_manager", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["operator_id"], name: "index_operator_organizations_on_operator_id"
+    t.index ["organization_id"], name: "index_operator_organizations_on_organization_id"
   end
 
   create_table "operators", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -169,6 +179,8 @@ ActiveRecord::Schema.define(version: 2019_10_06_075026) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "operator_organizations", "operators"
+  add_foreign_key "operator_organizations", "organizations"
   add_foreign_key "transactions", "customers"
   add_foreign_key "transactions", "operators"
   add_foreign_key "transactions", "transaction_categories"

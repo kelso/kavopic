@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  operator: one
+  organization: one
+  organization_manager: false
+
+two:
+  operator: two
+  organization: two
+  organization_manager: false

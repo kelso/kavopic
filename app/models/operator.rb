@@ -7,4 +7,6 @@ class Operator < ApplicationRecord
          :trackable
 
   has_many :transactions
+  has_many :operator_organizations
+  has_many :organizations, through: :operator_organizations
 end
