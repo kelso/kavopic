@@ -13,9 +13,9 @@ consumer.subscriptions.create("AdminChannel", {
     // Called when there's incoming data on the websocket for this channel
 
     // Play sound
-    var sound = new Howl({
-      src: ['/alert.mp3']
-    }).play();
+    // var sound = new Howl({
+    //   src: ['/alert.mp3']
+    // }).play();
 
     // Update points
     let div = document.getElementById('realtime_admin_dashboard');
