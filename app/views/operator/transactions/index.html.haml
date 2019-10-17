@@ -1,18 +1,5 @@
-%h2 Transakcie
-%p Transakcie vykonané pod profilom #{current_operator.email}
-
-.table-responsive
-  %table.table.table-bordered.table-sm
-    %thead
-      %tr
-        %th Zákazník
-        %th Aktivita
-        %th Zmena na bodoch
-        %th Vytvorené
-    %tbody
-      - @transactions.each do |transaction|
-        %tr
-          %td= transaction.customer.full_name
-          %td= transaction.transaction_category.name
-          %td= transaction.amount
-          %td= l transaction.created_at, format: :short
+%h2 História transakcií
+%p Transakcie vykonané pod profilom <strong>#{current_operator.full_name}</strong>
+%p
+  = link_to 'Ako môžem oskenovať zákazníka?', new_info_operator_transactions_path, class: ''
+= render 'content', transactions: @transactions

@@ -15,33 +15,3 @@
           = link_to "Prihlásenie", new_customer_session_path, class: 'nav-link text-primary'
         %li.nav-item
           = link_to "Registrácia", new_customer_registration_path, class: 'nav-link text-success'
-
-    -# %ul.navbar-nav
-    -#   - if user_signed_in?
-    -#     %li.nav-item.active
-    -#       = link_to "Odhlásiť sa", destroy_user_session_path, method: :delete, class: 'nav-link'
-    -#   - else
-    -#     %li.nav-item.active
-    -#       = link_to "Prihlásiť sa", new_user_session_path, class: 'nav-link'
-    -#     %li.nav-item.active
-    -#       = link_to "Zaregistrovať sa", new_user_registration_path, class: 'nav-link'
-
-    -#   %li.nav-item.active
-    -#     %a.nav-link{:href => "#"}
-    -#       Home
-    -#       %span.sr-only (current)
-    -#   %li.nav-item
-    -#     %a.nav-link{:href => "#"} Link
-    -#   %li.nav-item.dropdown
-    -#     %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-    -#       Dropdown
-    -#     .dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-    -#       %a.dropdown-item{:href => "#"} Action
-    -#       %a.dropdown-item{:href => "#"} Another action
-    -#       .dropdown-divider
-    -#       %a.dropdown-item{:href => "#"} Something else here
-    -#   %li.nav-item
-    -#     %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
-    -# %form.form-inline.my-2.my-lg-0
-    -#   %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "search"}/
-    -#   %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search

@@ -6,7 +6,7 @@ class Operator::TransactionsController < ApplicationController
   after_action :broadcast_to_admin_channel, only: [:create]
 
   def index
-    @transactions = current_operator.transactions.includes(:customer).order(created_at: :desc)
+    @transactions = current_operator.transactions.includes(:customer, :transaction_category, :organization).order(created_at: :desc)
   end
 
   def new

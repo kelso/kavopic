@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   end
 
   namespace :operator do
-    root to: 'dashboards#show'
-    resource :dashboard, only: [:show]
-    resources :transactions, only: [:index]
+    root to: 'transactions#index'
+    # resource :dashboard, only: [:show]
+    resources :transactions, only: [:index] do
+      get :new_info, on: :collection
+    end
     resources :customers, only: [] do
       resources :transactions, only: [:new, :create]
     end
