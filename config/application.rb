@@ -22,6 +22,7 @@ module Kavopic
     config.time_zone = 'Bratislava'
     config.hosts << "kavopic.local"
     config.hosts << "104.248.132.216"
+    config.hosts << "kavopic.huska.codes"
     config.hosts << "www.example.com" # for rails test
   end
 end
