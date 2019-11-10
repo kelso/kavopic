@@ -111,7 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # Mailer
-  config.action_mailer.default_url_options = { host: '104.248.132.216' }
+  config.action_mailer.default_url_options = { host: 'huska.codes' }
 
   # May be removed and used in production.rb only
   config.action_mailer.delivery_method = :smtp
