@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2019_10_16_181158) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -116,13 +115,11 @@ ActiveRecord::Schema.define(version: 2019_10_16_181158) do
     t.string "street"
     t.string "city"
     t.string "country"
-    t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "latitude", precision: 10, scale: 6
     t.decimal "longitude", precision: 10, scale: 6
     t.index ["latitude", "longitude"], name: "index_organizations_on_latitude_and_longitude"
-    t.index ["lonlat"], name: "index_organizations_on_lonlat", using: :gist
   end
 
   create_table "sample_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

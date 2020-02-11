@@ -31,7 +31,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth'
 gem 'rqrcode'
-gem 'activerecord-postgis-adapter'
+# gem 'activerecord-postgis-adapter' # NOT USED
 gem 'geocoder'
 
 # Reduces boot times through caching; required in config/boot.rb

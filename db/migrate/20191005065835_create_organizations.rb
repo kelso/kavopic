@@ -5,11 +5,11 @@ class CreateOrganizations < ActiveRecord::Migration[6.0]
       t.string :street
       t.string :city
       t.string :country
-      t.st_point :lonlat, geographic: true
+      # t.st_point :lonlat, geographic: true
 
       t.timestamps
     end
 
-    add_index :organizations, :lonlat, using: :gist
+    # add_index :organizations, :lonlat, using: :gist
   end
 end
