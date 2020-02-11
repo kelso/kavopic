@@ -1,0 +1,9 @@
+.git*
+db/*.sqlite3
+db/*.sqlite3-journal
+log/*
+tmp/*
+docker/web/Dockerfile
+README.rdoc
+
+# config/master.key

@@ -21,7 +21,8 @@ module Kavopic
 
     config.time_zone = 'Bratislava'
     config.hosts << "kavopic.local"
-    config.hosts << "104.248.132.216"
+    config.hosts << "192.168.1.107"
+    config.hosts << "134.209.81.70" # digitalocean droplet
     config.hosts << "kavopic.huska.codes"
     config.hosts << "www.example.com" # for rails test
   end
