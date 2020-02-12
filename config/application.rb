@@ -24,6 +24,7 @@ module Kavopic
     config.hosts << "kavopic.local"
     config.hosts << "192.168.1.107"
     config.hosts << "167.172.43.162" # digitalocean droplet
+    config.hosts << "165.22.66.203" # new digitalocean droplet
     config.hosts << "kavopic.huska.codes"
     config.hosts << "www.example.com" # for rails test
   end
