@@ -13,7 +13,7 @@
     docker-compose -f docker-compose.yml up -d
     docker-compose -f docker-compose.yml down
     
-    docker-compose -f docker-compose.yml run --rm web rails db:create db:migrate
+    docker-compose -f docker-compose.yml run --rm rails bundle exec rails db:create db:migrate
     
     docker exec kavopic2_web_1 rails db:create db:migrate
 
@@ -24,7 +24,7 @@
 * https://coderjourney.com/deploy-docker-digital-ocean/
 
 
-    docker-machine create --driver digitalocean --digitalocean-access-token xxx --digitalocean-size=s-1vcpu-1gb --digitalocean-region=ams3 kavopic2
+    docker-machine create --driver digitalocean --digitalocean-access-token xxx --digitalocean-size=s-1vcpu-1gb --digitalocean-region=ams3 kavopic5
 
 # Prepinanie env, docker-compose sa vykonaju na serveri ak je env nastaveny tam
 

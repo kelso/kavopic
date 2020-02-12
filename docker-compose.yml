@@ -1,37 +1,76 @@
 version: '3'
-
 volumes:
   postgres_data: {}
+  log_data: {}
+  bundle_data: {}
   redis_data: {}
 
 services:
-  web:
+  rails:
     build:
       context: .
-      dockerfile: ./docker/web/Dockerfile
-    volumes:
-      - .:/myappa
-    depends_on:
+      dockerfile: ./docker/rails/Dockerfile
+      args: &arguments
+        - APP_NAME=/kavopic4
+    restart: always
+    command: ./docker/rails/run.sh
+    links:
       - db
       - redis
+      #- sidekiq
+    environment:
+      - RAILS_ENV=production
+      - RAILS_LOG_TO_STDOUT=true
+      - RAILS_SERVE_STATIC_FILES=true
+    ports:
+      - 3000
+    volumes: &volumes
+      - log_data:/kavopic4/log
+      - bundle_data:/kavopic4/bundle
+
+#  sidekiq:
+#    build:
+#      context: .
+#      dockerfile: ./docker/sidekiq/Dockerfile
+#      args: *arguments
+#    restart: always
+#    command: ./docker/sidekiq/run.sh
+#    links:
+#      - db
+#      - redis
+#    environment:
+#      - RAILS_ENV=production
+#      - RAILS_LOG_TO_STDOUT=true
+#    volumes: *volumes
 
   nginx:
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
-    depends_on:
-      - web
+      args: *arguments
+    restart: always
+    links:
+      - rails
+    environment:
+      - VIRTUAL_HOST=kavopic.local
+      - LETSENCRYPT_HOST=example.com
+      - LETSENCRYPT_EMAIL=admin@example.com
     ports:
       - "80:80"
+    volumes:
+      - log_data:/kavopic4/log
+
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   redis:
-    image: 'redis'
+    image: redis
     volumes:
       - redis_data:/data
 
-  db:
-    image: postgres # postgres:9.4.1
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+networks:
+  default:
+    external:
+      name: webproxy
