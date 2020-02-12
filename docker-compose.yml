@@ -22,6 +22,7 @@ services:
       - RAILS_ENV=production
       - RAILS_LOG_TO_STDOUT=true
       - RAILS_SERVE_STATIC_FILES=true
+      - REDIS_URL=redis://redis:6379/
     ports:
       - 3000
     volumes: &volumes
@@ -69,6 +70,8 @@ services:
     image: redis
     volumes:
       - redis_data:/data
+    ports:
+      - "6379:6379"
 
 networks:
   default:
