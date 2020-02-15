@@ -11,7 +11,7 @@ services:
       context: .
       dockerfile: ./docker/rails/Dockerfile
       args: &arguments
-        - APP_NAME=/kavopic4
+        - APP_NAME=/kavopic
     restart: always
     command: ./docker/rails/run.sh
     links:
@@ -26,8 +26,8 @@ services:
     ports:
       - 3000
     volumes: &volumes
-      - log_data:/kavopic4/log
-      - bundle_data:/kavopic4/bundle
+      - log_data:/kavopic/log
+      - bundle_data:/kavopic/bundle
 
 #  sidekiq:
 #    build:
@@ -59,15 +59,17 @@ services:
     ports:
       - "80:80"
     volumes:
-      - log_data:/kavopic4/log
+      - log_data:/kavopic/log
 
   db:
-    image: postgres
+    image: postgres:11-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   redis:
-    image: redis
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
     volumes:
       - redis_data:/data
     ports:
